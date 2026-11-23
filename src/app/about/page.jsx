@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Reveal } from "../../components/RevealOnScroll";
+import { CLIENT_LOGOS } from "../../components/TrustedLogosSlider";
 
 const VALUES = [
   [
@@ -21,38 +22,6 @@ const VALUES = [
     "RESPECT",
     "Valuing our clients’ vision, investment, and time in every decision we make.",
   ],
-];
-
-const CLIENT_GRID = [
-  { name: "illy", src: "/images/logos/illy.svg" },
-  { name: "Scoozi", src: "/images/logos/scoozi.svg" },
-  { name: "Sirona Polyclinic", src: "/images/logos/sirona.svg" },
-  { name: "EBSAAR", src: "/images/logos/ebsaar.svg" },
-  { name: "FENDI", src: "/images/logos/fendi.svg" },
-
-  { name: "Switch", src: "/images/logos/switch.svg" },
-  { name: "VERSACE", src: "/images/logos/versace.svg" },
-  { name: "excellage", src: "/images/logos/excellage.svg" },
-  { name: "NMC", src: "/images/logos/09-HQI-Client-Logos.svg" },
-  { name: "The Elixir Clinic", src: "/images/logos/10-HQI-Client-Logos.svg" },
-
-  { name: "Medeor Hospital", src: "/images/logos/11-HQI-Client-Logos.svg" },
-  { name: "Abdul Samad Al Qurashi", src: "/images/logos/12-HQI-Client-Logos.svg" },
-  { name: "Gaelan Hospital", src: "/images/logos/13-HQI-Client-Logos.svg" },
-  { name: "Soma Solis", src: "/images/logos/14-HQI-Client-Logos.svg" },
-  { name: "PADRA", src: "/images/logos/15-HQI-Client-Logos.svg" },
-
-  { name: "Beautica", src: "/images/logos/beautica.svg" },
-  { name: "Gýneco", src: "/images/logos/17-HQI-Client-Logos.svg" },
-  { name: "Neuropedia", src: "/images/logos/neuropedia.svg" },
-  { name: "Novomed", src: "/images/logos/novomed.svg" },
-  { name: "First IVF", src: "/images/logos/first-ivf.svg" },
-
-  { name: "FertiClinic", src: "/images/logos/ferticlinic.svg" },
-  { name: "Burjeel", src: "/images/logos/burjeel.svg" },
-  { name: "Life Dx", src: "/images/logos/life-dx.svg" },
-  { name: "Clinica Joelle", src: "/images/logos/clinica-joelle.svg" },
-  { name: "Circle Care Clinic", src: "/images/logos/circle-care.svg" },
 ];
 
 export default function AboutPage() {
@@ -306,11 +275,11 @@ export default function AboutPage() {
               gap: "16px",
             }}
           >
-            {CLIENT_GRID.map((item) => {
-              const isFallback = failedLogos[item.name];
+            {CLIENT_LOGOS.map((item) => {
+              const isFallback = failedLogos[item.alt];
               return (
                 <div
-                  key={item.name}
+                  key={item.alt}
                   style={{
                     backgroundColor: "#ffffff",
                     border: "1px solid #ececec",
@@ -325,11 +294,11 @@ export default function AboutPage() {
                   {!isFallback ? (
                     <img
                       src={item.src}
-                      alt={item.name}
+                      alt={item.alt}
                       onError={() =>
                         setFailedLogos((prev) => ({
                           ...prev,
-                          [item.name]: true,
+                          [item.alt]: true,
                         }))
                       }
                       style={{
@@ -348,7 +317,7 @@ export default function AboutPage() {
                         color: "#111111",
                       }}
                     >
-                      {item.name}
+                      {item.alt}
                     </span>
                   )}
                 </div>

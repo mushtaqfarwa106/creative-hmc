@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const CLIENT_LOGOS = [
+export const CLIENT_LOGOS = [
   { src: encodeURI("/images/logos/01-HQI-Client-Logos.svg"), alt: "01-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/02-HQI-Client-Logos.svg"), alt: "02-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/04-HQI-Client-Logos.svg"), alt: "04-HQI-Client-Logos" },
