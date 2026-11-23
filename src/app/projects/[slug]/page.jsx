@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { PROJECTS, slugifyProject } from "../../../data/siteData";
+import { PROJECTS, slugifyProject } from "@/data/siteData";
 
 const IMAGE_EXTENSIONS = new Set([".webp", ".jpg", ".jpeg", ".png", ".avif"]);
 
@@ -43,10 +43,62 @@ function getFolderImages(folderName) {
   }
 }
 
-async function ProjectDetailContent({ params }) {
-  const { slug } = await params;
+function ProjectDetailSkeleton() {
+  return (
+    <div className="project-detail-container" aria-busy="true">
+      <div
+        style={{
+          height: "14px",
+          width: "160px",
+          background: "#ece8e4",
+          borderRadius: "6px",
+          marginBottom: "18px",
+        }}
+      />
+      <div
+        style={{
+          height: "42px",
+          width: "60%",
+          maxWidth: "460px",
+          background: "#ece8e4",
+          borderRadius: "8px",
+          marginBottom: "24px",
+        }}
+      />
+      <div
+        style={{
+          width: "100%",
+          aspectRatio: "16 / 9",
+          maxHeight: "520px",
+          background: "#f3f0ed",
+          borderRadius: "10px",
+          marginBottom: "28px",
+        }}
+      />
+      <div className="project-gallery-grid">
+        {[0, 1, 2].map((n) => (
+          <div
+            key={n}
+            style={{
+              width: "100%",
+              aspectRatio: "16 / 10",
+              background: "#f3f0ed",
+              borderRadius: "4px",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
-  const project = PROJECTS.find((item) => slugifyProject(item.name) === slug);
+async function ProjectDetailContent({ params }) {
+  const resolvedParams = await params;
+  const slug = decodeURIComponent(resolvedParams?.slug || "").trim().toLowerCase();
+
+  const project = PROJECTS.find(
+    (item) => slugifyProject(item.name).toLowerCase() === slug
+  );
 
   if (!project) {
     notFound();
@@ -58,7 +110,9 @@ async function ProjectDetailContent({ params }) {
       ? folderPhotos
       : Array.isArray(project.gallery) && project.gallery.length > 0
         ? project.gallery
-        : [project.img];
+        : project.img
+          ? [project.img]
+          : [];
 
   const mainPhoto = photos[0];
   const morePhotos = photos.slice(1);
@@ -79,6 +133,8 @@ async function ProjectDetailContent({ params }) {
           <img
             src={mainPhoto}
             alt={`${project.name} main view`}
+            decoding="async"
+            fetchPriority="high"
           />
         </figure>
       )}
@@ -116,6 +172,7 @@ async function ProjectDetailContent({ params }) {
                 <img
                   src={photoSrc}
                   alt={`${project.name} photo ${index + 2}`}
+                  decoding="async"
                 />
               </figure>
             ))}
@@ -129,7 +186,7 @@ async function ProjectDetailContent({ params }) {
 export default function ProjectDetailPage({ params }) {
   return (
     <main className="project-detail-page">
-      <Suspense fallback={<div className="project-detail-container" />}>
+      <Suspense fallback={<ProjectDetailSkeleton />}>
         <ProjectDetailContent params={params} />
       </Suspense>
     </main>
