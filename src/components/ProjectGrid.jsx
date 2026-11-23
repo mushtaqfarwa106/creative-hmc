@@ -2,17 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { PROJECTS } from "../data/siteData";
+import { PROJECTS, slugifyProject } from "../data/siteData";
 
 const SECTORS = ["All", "Medical", "Hospitality", "Retail", "Wellness"];
-
-export function slugifyProject(name = "") {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 export default function ProjectGrid({
   items = PROJECTS,

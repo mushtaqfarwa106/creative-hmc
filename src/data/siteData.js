@@ -3,6 +3,14 @@ export const WHATSAPP_NUMBER = "971551080986";
 export const getWhatsAppUrl = (message) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
+export function slugifyProject(name = "") {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export const SERVICES = [
   {
     num: "01",
@@ -110,11 +118,24 @@ export const PROJECTS = [
     city: "Dubai",
     area: "28,000 m²",
     duration: "16 months",
+    type: "Hospital fit-out",
+    description:
+      "Comprehensive hospital fit-out and specialized medical spaces in Dubai, including clinical suites, diagnostic imaging, therapy facilities, and patient care environments.",
     hue: 12,
     featured: true,
     img: "/images/projects/neuro-spinal.jpeg",
+    galleryFolder: "Neuro",
     gallery: [
-      "/images/projects/neuro-spinal.jpeg",
+      "/images/projects/Neuro/18-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/01-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/02-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/04-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/05-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/06-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/07-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/08-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/09-HQI-Neuro-Spinal-Hospital-opt.webp",
+      "/images/projects/Neuro/10-HQI-Neuro-Spinal-Hospital-opt.webp",
     ],
   },
   {
@@ -123,12 +144,14 @@ export const PROJECTS = [
     city: "Dubai",
     area: "5,500 m²",
     duration: "8 months",
+    type: "Polyclinic fit-out",
+    description:
+      "Modern polyclinic design and fit-out in Dubai crafted for calm patient flow, consultation suites, and contemporary architectural finishes.",
     hue: 12,
     featured: true,
     img: "/images/projects/mind-fit.jpeg",
-    gallery: [
-      "/images/projects/mind-fit.jpeg",
-    ],
+    galleryFolder: "mynt",
+    gallery: [],
   },
   {
     name: "Al Qassimi Hospital (VIP Section)",
@@ -136,12 +159,14 @@ export const PROJECTS = [
     city: "Sharjah",
     area: "2,300 m²",
     duration: "8 months",
+    type: "Hospital VIP suite fit-out",
+    description:
+      "Refined VIP section fit-out at Al Qassimi Hospital in Sharjah featuring welcoming reception areas, corridors, and clinical suites.",
     hue: 12,
     featured: false,
     img: "/images/projects/al-qassaim-hospital.jpeg",
-    gallery: [
-      "/images/projects/al-qassaim-hospital.jpeg",
-    ],
+    galleryFolder: "al qassim",
+    gallery: [],
   },
   {
     name: "Seibel Breast Cancer Center",
@@ -153,7 +178,7 @@ export const PROJECTS = [
     featured: true,
     img: "/images/projects/seibel-brestcancer.jpeg",
     gallery: [
-      "/images/projects/seibel-brestcance r.jpeg",
+      "/images/projects/seibel-brestcancer.jpeg",
     ],
   },
   {
@@ -192,7 +217,7 @@ export const PROJECTS = [
     featured: false,
     img: "/images/projects/invisilign.jpeg",
     gallery: [
-      "/images/projects/invisalign.jpeg",
+      "/images/projects/invisilign.jpeg",
     ],
   },
   {
@@ -257,7 +282,7 @@ export const PROJECTS = [
     featured: false,
     img: "/images/projects/saphire-dent-clinic.jpeg",
     gallery: [
-      "/images/projects/saphire-dent-clinicu.jpeg",
+      "/images/projects/saphire-dent-clinic.jpeg",
     ],
   },
   {

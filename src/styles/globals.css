@@ -1329,3 +1329,24 @@ section.mist:has(.tl) .card p {
   color: #090402;
   text-decoration: underline;
 }
+.project-main-photo {
+  margin: 0 0 24px 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.project-main-photo img {
+  width: 100%;
+  max-height: 540px;
+  object-fit: cover;
+  display: block;
+}
+
+.project-detail-info {
+  margin-bottom: 32px;
+}
+
+.project-detail-description {
+  margin-top: 10px;
+  line-height: 1.65;
+}
