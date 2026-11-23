@@ -61,4 +61,4 @@ export function StatCounter({ target, suffix = "", label, delay = 0 }) {
       <span>{label}</span>
     </Reveal>
   );
-}
+} 

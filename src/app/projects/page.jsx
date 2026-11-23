@@ -1,4 +1,3 @@
-import { Reveal } from "../../components/RevealOnScroll";
 import ProjectGrid from "../../components/ProjectGrid";
 
 export default function ProjectsPage() {
@@ -16,7 +15,7 @@ export default function ProjectsPage() {
       </div>
       <section>
         <div className="w">
-          <ProjectGrid />
+          <ProjectGrid showFilter />
         </div>
       </section>
     </>

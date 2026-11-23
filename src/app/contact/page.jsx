@@ -37,7 +37,7 @@ export default function ContactPage() {
             <div className="card" style={{ background: "#1b1b1b", borderColor: "#333", marginTop: "14px" }}>
               <h3>Email</h3>
               <p>
-                <a href="mailto:info@creativeid.me">info@creativeid.me</a>
+                <a href="mailto:info@creativehmc.com">info@creativehmc.com</a>
               </p>
             </div>
             <div className="card" style={{ background: "#1b1b1b", borderColor: "#333", marginTop: "14px" }}>

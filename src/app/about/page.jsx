@@ -1,87 +1,370 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Reveal } from "../../components/RevealOnScroll";
 
-export default function AboutPage() {
-  const values = [
-    ["Craftsmanship", "Technical precision, quality workmanship and attention to every detail."],
-    ["Accountability", "Ownership of every stage, from initial concept to final handover."],
-    ["Transparency", "Clear communication, honest commitments and defined expectations."],
-    ["Respect", "Valuing our clients’ vision, investment and time in every decision."]
-  ];
+const VALUES = [
+  [
+    "CRAFTSMANSHIP",
+    "Delivering excellence through technical precision, quality workmanship, and attention to every detail.",
+  ],
+  [
+    "ACCOUNTABILITY",
+    "Taking ownership of every stage, from initial concept to final handover.",
+  ],
+  [
+    "TRANSPARENCY",
+    "Building trust through clear communication, honest commitments, and defined expectations.",
+  ],
+  [
+    "RESPECT",
+    "Valuing our clients’ vision, investment, and time in every decision we make.",
+  ],
+];
 
-  const sectors = [
-    ["Medical Facilities", "Healthcare environments delivered to clinical, operational and regulatory requirements."],
-    ["Hospitality Venues", "Restaurants, cafés and hotels with memorable design and operational efficiency."],
-    ["Retail Stores", "Retail spaces that express brand identity and support commercial performance."],
-    ["Wellness Centres", "Calming spaces that prioritise comfort, functionality and client experience."],
-    ["Corporate Offices", "Contemporary workplaces for productivity, collaboration and identity."],
-    ["Mixed-Use and Residences", "Integrated commercial developments and refined private residences."]
-  ];
+const CLIENT_GRID = [
+  { name: "illy", src: "/images/logos/illy.svg" },
+  { name: "Scoozi", src: "/images/logos/scoozi.svg" },
+  { name: "Sirona Polyclinic", src: "/images/logos/sirona.svg" },
+  { name: "EBSAAR", src: "/images/logos/ebsaar.svg" },
+  { name: "FENDI", src: "/images/logos/fendi.svg" },
+
+  { name: "Switch", src: "/images/logos/switch.svg" },
+  { name: "VERSACE", src: "/images/logos/versace.svg" },
+  { name: "excellage", src: "/images/logos/excellage.svg" },
+  { name: "NMC", src: "/images/logos/09-HQI-Client-Logos.svg" },
+  { name: "The Elixir Clinic", src: "/images/logos/10-HQI-Client-Logos.svg" },
+
+  { name: "Medeor Hospital", src: "/images/logos/11-HQI-Client-Logos.svg" },
+  { name: "Abdul Samad Al Qurashi", src: "/images/logos/12-HQI-Client-Logos.svg" },
+  { name: "Gaelan Hospital", src: "/images/logos/13-HQI-Client-Logos.svg" },
+  { name: "Soma Solis", src: "/images/logos/14-HQI-Client-Logos.svg" },
+  { name: "PADRA", src: "/images/logos/15-HQI-Client-Logos.svg" },
+
+  { name: "Beautica", src: "/images/logos/beautica.svg" },
+  { name: "Gýneco", src: "/images/logos/17-HQI-Client-Logos.svg" },
+  { name: "Neuropedia", src: "/images/logos/neuropedia.svg" },
+  { name: "Novomed", src: "/images/logos/novomed.svg" },
+  { name: "First IVF", src: "/images/logos/first-ivf.svg" },
+
+  { name: "FertiClinic", src: "/images/logos/ferticlinic.svg" },
+  { name: "Burjeel", src: "/images/logos/burjeel.svg" },
+  { name: "Life Dx", src: "/images/logos/life-dx.svg" },
+  { name: "Clinica Joelle", src: "/images/logos/clinica-joelle.svg" },
+  { name: "Circle Care Clinic", src: "/images/logos/circle-care.svg" },
+];
+
+export default function AboutPage() {
+  const [failedLogos, setFailedLogos] = useState({});
 
   return (
     <>
-      <div className="ph">
+      {/* 1. Red / Orange-Red Top Section: Hero + Who We Are */}
+      <div
+        style={{
+          backgroundColor: "#EE402D",
+          color: "#111111",
+          padding: "72px 0 84px",
+        }}
+      >
         <div className="w">
-          <div className="eb">ABOUT US</div>
-          <h1>One team.<br />Complete solutions.</h1>
+          <div
+            style={{
+              fontSize: "12px",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+            }}
+          >
+            ABOUT US
+          </div>
+          <h1 style={{ marginBottom: "32px" }}>
+            ONE TEAM.
+            <br />
+            COMPLETE SOLUTIONS.
+          </h1>
+          <p
+            style={{
+              maxWidth: "74ch",
+              fontSize: "19px",
+              lineHeight: 1.65,
+              color: "#141414",
+              margin: 0,
+            }}
+          >
+            Established in Dubai in 2017, Creative HMC Interior Design is a
+            multidisciplinary design-and-build company specialising in
+            healthcare, wellness, hospitality, retail, and commercial interiors
+            across the UAE. With extensive experience in clinics, hospitals,
+            medical centres, and wellness facilities, we deliver comprehensive
+            design-and-build solutions that balance aesthetics, functionality,
+            and technical precision. Our integrated approach brings architecture,
+            interior design, engineering, authority approvals, and construction
+            together under one accountable team. From initial concept to final
+            handover, we manage every stage with a commitment to quality,
+            attention to detail, and the successful delivery of each project.
+          </p>
         </div>
       </div>
-      <section>
+
+      {/* 2. Black Section: Our Mission, Our Vision, Core Values & Outlined CREATIVE Mark */}
+      <section
+        style={{
+          backgroundColor: "#000000",
+          color: "#ffffff",
+          padding: "84px 0 0",
+          overflow: "hidden",
+        }}
+      >
         <div className="w">
-          <div className="tag">WHO WE ARE</div>
-          <Reveal><h2>Design-and-build, <em>under one team</em></h2></Reveal>
+          {/* Mission & Vision */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "48px",
+              paddingBottom: "64px",
+            }}
+          >
+            <Reveal>
+              <div>
+                <div
+                  style={{
+                    width: "160px",
+                    height: "3px",
+                    backgroundColor: "#EE402D",
+                    marginBottom: "28px",
+                  }}
+                />
+                <h2
+                  style={{
+                    color: "#ffffff",
+                    fontSize: "28px",
+                    marginBottom: "14px",
+                  }}
+                >
+                  OUR MISSION
+                </h2>
+                <p
+                  style={{
+                    color: "#e6e6e6",
+                    fontSize: "17px",
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}
+                >
+                  To create purposeful, functional, and inspiring environments
+                  through thoughtful design, technical excellence, and quality
+                  craftsmanship. We are committed to delivering seamless
+                  design-and-build solutions with precision, integrity, and
+                  attention to every detail, from concept to completion.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div>
+                <div
+                  style={{
+                    width: "160px",
+                    height: "3px",
+                    backgroundColor: "#EE402D",
+                    marginBottom: "28px",
+                  }}
+                />
+                <h2
+                  style={{
+                    color: "#ffffff",
+                    fontSize: "28px",
+                    marginBottom: "14px",
+                  }}
+                >
+                  OUR VISION
+                </h2>
+                <p
+                  style={{
+                    color: "#e6e6e6",
+                    fontSize: "17px",
+                    lineHeight: 1.65,
+                    margin: 0,
+                  }}
+                >
+                  To be the leading design-and-build partner in the UAE,
+                  recognised for excellence, reliability, and innovation in
+                  delivering exceptional healthcare, wellness, and commercial
+                  environments.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Core Values */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "32px",
+              paddingBottom: "64px",
+            }}
+          >
+            {VALUES.map((v, i) => (
+              <Reveal key={v[0]} delay={i * 0.08}>
+                <div>
+                  <h3
+                    style={{
+                      color: "#EE402D",
+                      fontSize: "17px",
+                      fontWeight: 700,
+                      letterSpacing: "0.06em",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {v[0]}
+                  </h3>
+                  <p
+                    style={{
+                      color: "#e0e0e0",
+                      fontSize: "14px",
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
+                  >
+                    {v[1]}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* Outlined CREATIVE Wordmark at Bottom of Black Section */}
+        <div
+          aria-hidden="true"
+          style={{
+            width: "100%",
+            textAlign: "center",
+            fontSize: "clamp(72px, 19vw, 240px)",
+            fontWeight: 700,
+            lineHeight: 0.82,
+            letterSpacing: "0.02em",
+            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.28)",
+            userSelect: "none",
+            paddingBottom: "8px",
+          }}
+        >
+          CREATIVE
+        </div>
+      </section>
+
+      {/* 3. White Section Below Black Band: Trusted Partners / Logo Grid */}
+      <section style={{ backgroundColor: "#ffffff", color: "#111111" }}>
+        <div className="w">
+          <div
+            style={{
+              fontSize: "12px",
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+              marginBottom: "10px",
+              color: "#111111",
+            }}
+          >
+            OUR CLIENTS
+          </div>
           <Reveal>
-            <p className="lead" style={{ maxWidth: "70ch" }}>
-              Established in Dubai in 2017, Creative HMC Interior Design is a multidisciplinary design-and-build company specialising in healthcare, wellness, hospitality, retail and commercial interiors across the UAE. Architecture, interior design, engineering, authority approvals and construction come together under one accountable team, from initial concept to final handover. As the contracting division of HQ International, Creative HMC provides integrated design-and-build and project execution services.
-            </p>
+            <h2 style={{ marginBottom: "18px" }}>
+              TRUSTED ACROSS INDUSTRIES.
+            </h2>
           </Reveal>
-       <div style={{ margin: "34px 0", borderRadius: "24px", overflow: "hidden", border: "1px solid var(--ln)" }}>
-  <img
-    src="/images/about/team.jpeg"
-    alt="Creative HMC Team"
-    style={{ width: "100%", height: "auto", display: "block" }}
-  />
-</div>
-          <div className="mv">
-            <div className="card">
-              <h3>Mission</h3>
-              <p>To create purposeful, functional, and inspiring environments through thoughtful design, technical excellence, and quality craftsmanship, delivering seamless design-and-build solutions from concept to completion.</p>
-            </div>
-            <div className="card">
-              <h3>Vision</h3>
-              <p>To be the leading design-and-build partner in the UAE, recognised for excellence, reliability, and innovation in healthcare, wellness, and commercial environments.</p>
-            </div>
+          <div
+            style={{
+              width: "150px",
+              height: "3px",
+              backgroundColor: "#EE402D",
+              marginBottom: "22px",
+            }}
+          />
+          <p
+            style={{
+              fontSize: "18px",
+              lineHeight: 1.55,
+              color: "#222222",
+              marginBottom: "36px",
+            }}
+          >
+            We work with clinics, restaurants, hotels, retail brands and
+            wellness centres across the UAE.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              gap: "16px",
+            }}
+          >
+            {CLIENT_GRID.map((item) => {
+              const isFallback = failedLogos[item.name];
+              return (
+                <div
+                  key={item.name}
+                  style={{
+                    backgroundColor: "#ffffff",
+                    border: "1px solid #ececec",
+                    height: "110px",
+                    padding: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                  }}
+                >
+                  {!isFallback ? (
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      onError={() =>
+                        setFailedLogos((prev) => ({
+                          ...prev,
+                          [item.name]: true,
+                        }))
+                      }
+                      style={{
+                        maxHeight: "52px",
+                        maxWidth: "100%",
+                        width: "auto",
+                        objectFit: "contain",
+                      }}
+                    />
+                  ) : (
+                    <span
+                      style={{
+                        fontWeight: 700,
+                        fontSize: "15px",
+                        letterSpacing: "0.04em",
+                        color: "#111111",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
-      <section className="mist">
-        <div className="w">
-          <div className="tag">CORE VALUES</div>
-          <Reveal><h2>What we <em>stand for</em></h2></Reveal>
-          <div className="g3">
-            {values.map((v, i) => (
-              <Reveal key={v[0]} delay={i * 0.08} className="card">
-                <h3>{v[0]}</h3>
-                <p>{v[1]}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="w">
-          <div className="tag">SECTORS</div>
-          <Reveal><h2>Diverse spaces. <em>One standard.</em></h2></Reveal>
-          <div className="g3">
-            {sectors.map((s, i) => (
-              <Reveal key={s[0]} delay={i * 0.08} className="card">
-                <h3>{s[0]}</h3>
-                <p>{s[1]}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+
+      {/* CTA Band */}
+      <div className="band">
+        <h2>Have a space to design and build? Tell us about it.</h2>
+        <Link className="btn k" href="/contact">
+          Start a Conversation →
+        </Link>
+      </div>
     </>
   );
 }

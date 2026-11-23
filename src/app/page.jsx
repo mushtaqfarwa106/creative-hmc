@@ -3,11 +3,12 @@ import { SERVICES, SECTORS_MARQUEE } from "@/data/siteData";
 import { Reveal, StatCounter } from "../components/RevealOnScroll";
 import ProcessTimeline from "../components/ProcessTimeline";
 import ProjectGrid from "../components/ProjectGrid";
+import TrustedLogosSlider from "../components/TrustedLogosSlider";
 
 export default function HomePage() {
   return (
     <>
-      {/* Red Hero with Self-Drawing C-Arcs & Floating Badges */}
+      {/* Red Hero with Creative C-Stroke */}
       <div className="hero">
         <div className="w">
           <div>
@@ -29,28 +30,10 @@ export default function HomePage() {
           </div>
 
           <div className="arc">
-            <svg viewBox="0 0 600 600">
-              <g>
-                <path
-                  pathLength="1"
-                  d="M116.2 116.2A260 260 0 0 1 483.8 116.2L413.1 186.9A160 160 0 0 0 186.9 186.9Z"
-                />
-              </g>
-              <g transform="rotate(180 300 300)">
-                <path
-                  pathLength="1"
-                  d="M116.2 116.2A260 260 0 0 1 483.8 116.2L413.1 186.9A160 160 0 0 0 186.9 186.9Z"
-                />
-              </g>
-            </svg>
-            <div className="fl f1">
-              <b>Approvals cleared</b>
-              <span>DHA · Civil Defence · DEWA</span>
-            </div>
-            <div className="fl f2">
-              <b>Handover complete</b>
-              <span>Neuro Spinal · 28,000 m²</span>
-            </div>
+            <img
+              src="/images/Creative Stroke.png"
+              alt="Creative HMC C Mark"
+            />
           </div>
         </div>
       </div>
@@ -122,7 +105,7 @@ export default function HomePage() {
               Selected <em>work</em>
             </h2>
           </Reveal>
-          <ProjectGrid featuredOnly />
+          <ProjectGrid limit={3} />
           <p style={{ marginTop: "26px" }}>
             <Link className="btn o" href="/projects">
               All projects →
@@ -149,17 +132,13 @@ export default function HomePage() {
             style={{
               background: "#fff",
               borderRadius: "24px",
-              padding: "32px 24px",
+              padding: "24px 20px",
               border: "1px solid var(--ln)",
               maxWidth: "1000px",
               margin: "0 auto",
             }}
           >
-            <img
-              src="/images/trusted-parties.jpeg"
-              alt="Creative HMC Clients including NMC, Burjeel, Versace, Fendi, Novomed, and Medeor Hospital"
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
+            <TrustedLogosSlider />
           </div>
         </div>
       </section>

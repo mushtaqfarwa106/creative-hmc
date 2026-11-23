@@ -1,94 +1,108 @@
 "use client";
+
+import Link from "next/link";
 import { useState } from "react";
-import { PROJECTS, getWhatsAppUrl } from "../data/siteData";
+import { PROJECTS } from "../data/siteData";
 
-export default function ProjectGrid({ featuredOnly = false }) {
-  const [filter, setFilter] = useState("All");
-  const [selected, setSelected] = useState(null);
+const SECTORS = ["All", "Medical", "Hospitality", "Retail", "Wellness"];
 
-  const items = featuredOnly
-    ? PROJECTS.filter((p) => p.featured)
-    : PROJECTS.filter((p) => filter === "All" || p.sector === filter);
+export function slugifyProject(name = "") {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export default function ProjectGrid({
+  items = PROJECTS,
+  limit = null,
+  featuredOnly = false,
+  showFilter = false,
+}) {
+  const [selectedSector, setSelectedSector] = useState("All");
+
+  const effectiveLimit =
+    typeof limit === "number" ? limit : featuredOnly ? 3 : null;
+
+  const sectorFiltered =
+    showFilter && selectedSector !== "All"
+      ? items.filter((project) => project.sector === selectedSector)
+      : items;
+
+  const visibleProjects =
+    typeof effectiveLimit === "number"
+      ? sectorFiltered.slice(0, effectiveLimit)
+      : sectorFiltered;
 
   return (
-    <>
-      {!featuredOnly && (
-        <div className="chips">
-          {["All", "Medical", "Hospitality", "Retail", "Wellness"].map((sec) => (
-            <button
-              key={sec}
-              type="button"
-              className={`chip ${filter === sec ? "on" : ""}`}
-              onClick={() => setFilter(sec)}
-            >
-              {sec}
-            </button>
-          ))}
+    <div className="project-grid-wrapper">
+      {showFilter && (
+        <div className="project-filter-bar">
+          {SECTORS.map((sector) => {
+            const isActive = selectedSector === sector;
+            return (
+              <button
+                key={sector}
+                type="button"
+                onClick={() => setSelectedSector(sector)}
+                className={`project-filter-btn ${isActive ? "is-active" : ""}`}
+              >
+                {sector === "All" ? "All Projects" : sector}
+              </button>
+            );
+          })}
         </div>
       )}
 
-      <div className={featuredOnly ? "bento" : "pgrid"}>
-        {items.map((proj) => (
-          <div
-            key={proj.name}
-            className="t"
-            style={{
-              "--h": proj.hue,
-              backgroundImage: proj.img ? `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${proj.img})` : undefined,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-            onClick={() => setSelected(proj)}
-          >
-            <b>{proj.name}</b>
-            <span>
-              {proj.sector} · {proj.city} {proj.area !== "-" ? ` · ${proj.area}` : ""}
-            </span>
-          </div>
-        ))}
+      <div className="project-cards-grid project-cards-grid--three">
+        {visibleProjects.map((project, idx) => {
+          const slug = slugifyProject(project.name);
+          return (
+            <article
+              key={`${project.name}-${project.city}-${idx}`}
+              className="project-card-clean"
+            >
+              <Link href={`/projects/${slug}`} className="project-card-image-box">
+                <img
+                  src={project.img}
+                  alt={project.name}
+                  loading="lazy"
+                />
+              </Link>
+
+              <div className="project-card-content">
+                <div className="project-card-meta-top">
+                  <span>{project.sector}</span>
+                  <span>{project.city}</span>
+                </div>
+
+                <h3 className="project-card-title">{project.name}</h3>
+
+                <p className="project-card-specs">
+                  {project.area && project.area !== "-" ? project.area : ""}
+                  {project.area &&
+                  project.area !== "-" &&
+                  project.duration &&
+                  project.duration !== "-"
+                    ? " • "
+                    : ""}
+                  {project.duration && project.duration !== "-"
+                    ? project.duration
+                    : ""}
+                </p>
+
+                <Link
+                  href={`/projects/${slug}`}
+                  className="project-card-see-btn"
+                >
+                  See Project
+                </Link>
+              </div>
+            </article>
+          );
+        })}
       </div>
-
-      {selected && (
-        <div className="md" onClick={() => setSelected(null)}>
-          <div className="mb2" onClick={(e) => e.stopPropagation()}>
-            <h3>{selected.name}</h3>
-            <span className="cp">{selected.sector}</span>
-            <span className="cp">{selected.city}</span>
-            {selected.area !== "-" && <span className="cp">Area {selected.area}</span>}
-            {selected.duration !== "-" && (
-              <span className="cp">Duration {selected.duration}</span>
-            )}
-            <div className="gl" style={{ "--h": selected.hue }}>
-              {selected.gallery && selected.gallery.length > 0 ? (
-                selected.gallery.map((imgSrc, i) => (
-                  <div key={i} style={{ padding: 0, overflow: "hidden", borderRadius: "14px" }}>
-                    <img src={imgSrc} alt={`${selected.name} ${i + 1}`} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                  </div>
-                ))
-              ) : (
-                <div>Project photo 1</div>
-              )}
-            </div>
-            <a
-              className="btn r"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={getWhatsAppUrl(
-                `Hello Creative HMC, I saw ${selected.name} and would like a similar project.`
-              )}
-            >
-              Discuss a similar project →
-            </a>
-            <button
-              type="button"
-              className="btn o"
-              onClick={() => setSelected(null)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 }

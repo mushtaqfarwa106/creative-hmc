@@ -4,13 +4,28 @@ import { getWhatsAppUrl } from "@/data/siteData";
 export default function Footer() {
   return (
     <>
-      <footer>
+      <footer className="orig-footer">
         <div className="w fg">
           <div>
-            <Link className="logo" href="/" style={{ color: "#fff" }}>
-              Creative HMC
+            <Link
+              href="/"
+              style={{
+                display: "inline-block",
+                textDecoration: "none",
+              }}
+            >
+              <img
+                src="/images/Creative-4.svg"
+                alt="Creative Interior Design"
+                style={{
+                  width: "240px",
+                  maxWidth: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
             </Link>
-            <p style={{ marginTop: "12px" }}>
+            <p style={{ marginTop: "16px" }}>
               Design-and-build interiors across the UAE. Contracting division of HQ International.
             </p>
           </div>
@@ -23,17 +38,34 @@ export default function Footer() {
             <Link href="/contact">Contact Us</Link>
           </div>
           <div>
-            <h4>Sectors</h4>
-            <p>Medical</p>
-            <p>Hospitality</p>
-            <p>Retail</p>
-            <p>Wellness</p>
-          </div>
-          <div>
             <h4>Contact</h4>
             <p>Business Avenue, Office 705, Sheikh Rashid Rd, Dubai</p>
-            <p>info@creativeid.me</p>
+            <p>info@creativehmc.com</p>
             <p>Licence 788951</p>
+          </div>
+          <div>
+            <h4>Follow Us</h4>
+            <a
+              href="https://www.linkedin.com/company/creative-hmc-interior-design/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.instagram.com/creativeinteriors.ae/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+            <a
+              href={getWhatsAppUrl("Hello Creative HMC, I’d like to discuss a project.")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
           </div>
         </div>
       </footer>

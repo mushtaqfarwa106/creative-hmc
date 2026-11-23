@@ -19,10 +19,10 @@ export default function Header() {
     <header>
       <div className="w">
         <Link className="logo" href="/">
-          <svg viewBox="0 0 40 40">
-            <path d="M7 15a15 15 0 0 1 26 0" fill="none" stroke="#111" strokeWidth="7" />
-            <path d="M7 25a15 15 0 0 0 26 0" fill="none" stroke="#111" strokeWidth="7" />
-          </svg>
+          <img
+            src="/images/Creative logo-01.png"
+            alt="Creative HMC"
+          />
           Creative HMC
         </Link>
 
@@ -39,17 +39,19 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link className="btn r" style={{ margin: 0 }} href="/contact">
-          Start a Project
-        </Link>
-        <button
-          type="button"
-          className="mbtn"
-          aria-label="Menu"
-          onClick={() => setMenuOpen((prev) => !prev)}
-        >
-          ☰
-        </button>
+        <div className="hd-actions">
+          <Link className="btn r" style={{ margin: 0 }} href="/contact">
+            Start a Project
+          </Link>
+          <button
+            type="button"
+            className="mbtn"
+            aria-label="Menu"
+            onClick={() => setMenuOpen((prev) => !prev)}
+          >
+            ☰
+          </button>
+        </div>
       </div>
     </header>
   );
