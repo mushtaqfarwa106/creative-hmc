@@ -15,19 +15,19 @@ export const CLIENT_LOGOS = [
   { src: encodeURI("/images/logos/13-HQI-Client-Logos.svg"), alt: "13-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/14-HQI-Client-Logos.svg"), alt: "14-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/15-HQI-Client-Logos.svg"), alt: "15-HQI-Client-Logos" },
-  { src: encodeURI("/images/logos/17 HQI Client Logos.svg"), alt: "17 HQI Client Logos" },
+  { src: encodeURI("/images/logos/17-HQI-Client-Logos.svg"), alt: "17-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/18-HQI-Client-Logos.svg"), alt: "18-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/19-HQI-Client-Logos.svg"), alt: "19-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/20-HQI-Client-Logos.svg"), alt: "20-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/21-HQI-Client-Logos.svg"), alt: "21-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/22-HQI-Client-Logos.svg"), alt: "22-HQI-Client-Logos" },
-  { src: encodeURI("/images/logos/23 HQI Client Logos.svg"), alt: "23 HQI Client Logos" },
+  { src: encodeURI("/images/logos/23-HQI-Client-Logos.svg"), alt: "23-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/24-HQI-Client-Logos.svg"), alt: "24-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/25-HQI-Client-Logos.svg"), alt: "25-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/26-HQI-Client-Logos.svg"), alt: "26-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/27-HQI-Client-Logos.svg"), alt: "27-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/28-HQI-Client-Logos.svg"), alt: "28-HQI-Client-Logos" },
-  { src: encodeURI("/images/logos/29 HQI Client Logos.svg"), alt: "29 HQI Client Logos" },
+  { src: encodeURI("/images/logos/29-HQI-Client-Logos.svg"), alt: "29-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/30-HQI-Client-Logos.svg"), alt: "30-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/31-HQI-Client-Logos.svg"), alt: "31-HQI-Client-Logos" },
   { src: encodeURI("/images/logos/32-HQI-Client-Logos.svg"), alt: "32-HQI-Client-Logos" },
@@ -45,16 +45,27 @@ function getVisibleCount(width) {
 function LogoSlideItem({ logo }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) return null;
-
   return (
     <div className="logo-slider-slide">
-      <img
-        src={logo.src}
-        alt={logo.alt}
-        loading="lazy"
-        onError={() => setFailed(true)}
-      />
+      {!failed ? (
+        <img
+          src={logo.src}
+          alt={logo.alt}
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span
+          style={{
+            fontSize: "11px",
+            fontWeight: 600,
+            color: "#333",
+            textAlign: "center",
+            lineHeight: 1.25,
+          }}
+        >
+          {logo.alt}
+        </span>
+      )}
     </div>
   );
 }
