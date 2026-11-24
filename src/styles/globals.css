@@ -1501,7 +1501,7 @@ section.mist:has(.tl) .card p {
 footer {
   background: #000;
   color: #bbb;
-  padding: 48px 0 36px;
+  padding: 56px 0 40px;
   font-size: 14px;
   width: 100%;
 }
@@ -1509,7 +1509,7 @@ footer {
 .fg {
   display: grid;
   grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.85fr) minmax(0, 1.05fr) minmax(0, 0.85fr);
-  gap: 20px 24px;
+  gap: 24px 28px;
   align-items: start;
 }
 
@@ -1520,15 +1520,27 @@ footer {
 footer h4 {
   color: #fff;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 footer p,
 footer a {
-  margin: 2px 0;
-  line-height: 1.45;
+  margin: 4px 0;
+  line-height: 1.5;
   color: #bbb;
   text-decoration: none;
   display: block;
-  overflow-wrap: break-word;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+@media (max-width: 860px) {
+  footer {
+    padding: 44px 0 32px;
+  }
+
+  .fg {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
