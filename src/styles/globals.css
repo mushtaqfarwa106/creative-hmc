@@ -1713,3 +1713,11 @@ footer a {
     display: none !important;
   }
 }
+@media (max-width: 639px) {
+  .about-logos-grid,
+  .client-logos-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px;
+  }
+}
