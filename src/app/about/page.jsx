@@ -34,10 +34,11 @@ export default function AboutPage() {
         style={{
           backgroundColor: "#EE402D",
           color: "#111111",
-          padding: "72px 0 84px",
+          padding: "clamp(48px, 7vw, 84px) 0 clamp(56px, 8vw, 88px)",
+          overflowX: "clip",
         }}
       >
-        <div className="w">
+        <div className="w" style={{ minWidth: 0 }}>
           <div
             style={{
               fontSize: "12px",
@@ -45,22 +46,32 @@ export default function AboutPage() {
               letterSpacing: "0.14em",
               textTransform: "uppercase",
               marginBottom: "12px",
+              textAlign: "left",
             }}
           >
             ABOUT US
           </div>
-          <h1 style={{ marginBottom: "32px" }}>
+          <h1
+            style={{
+              marginBottom: "clamp(20px, 3.5vw, 32px)",
+              textAlign: "left",
+              maxWidth: "100%",
+            }}
+          >
             ONE TEAM.
             <br />
             COMPLETE SOLUTIONS.
           </h1>
           <p
             style={{
-              maxWidth: "74ch",
-              fontSize: "19px",
+              width: "100%",
+              maxWidth: "100%",
+              fontSize: "clamp(15.5px, 1.45vw, 19px)",
               lineHeight: 1.65,
               color: "#141414",
               margin: 0,
+              textAlign: "justify",
+              textJustify: "inter-word",
             }}
           >
             Established in Dubai in 2017, Creative HMC Interior Design is a
@@ -83,35 +94,39 @@ export default function AboutPage() {
         style={{
           backgroundColor: "#000000",
           color: "#ffffff",
-          padding: "84px 0 0",
-          overflow: "hidden",
+          padding: "clamp(56px, 8vw, 84px) 0 0",
+          overflow: "clip",
         }}
       >
-        <div className="w">
+        <div className="w" style={{ minWidth: 0 }}>
           {/* Mission & Vision */}
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: "48px",
-              paddingBottom: "64px",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+              gap: "clamp(28px, 4vw, 48px)",
+              paddingBottom: "clamp(44px, 6vw, 64px)",
+              alignItems: "start",
             }}
           >
             <Reveal>
-              <div>
+              <div style={{ textAlign: "left", minWidth: 0, width: "100%" }}>
                 <div
                   style={{
                     width: "160px",
+                    maxWidth: "100%",
                     height: "3px",
                     backgroundColor: "#EE402D",
-                    marginBottom: "28px",
+                    marginBottom: "24px",
                   }}
                 />
                 <h2
                   style={{
                     color: "#ffffff",
-                    fontSize: "28px",
+                    fontSize: "clamp(22px, 2.4vw, 28px)",
                     marginBottom: "14px",
+                    textAlign: "left",
                   }}
                 >
                   OUR MISSION
@@ -119,9 +134,11 @@ export default function AboutPage() {
                 <p
                   style={{
                     color: "#e6e6e6",
-                    fontSize: "17px",
+                    fontSize: "clamp(15px, 1.3vw, 17px)",
                     lineHeight: 1.65,
                     margin: 0,
+                    textAlign: "justify",
+                    textJustify: "inter-word",
                   }}
                 >
                   To create purposeful, functional, and inspiring environments
@@ -134,20 +151,22 @@ export default function AboutPage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <div>
+              <div style={{ textAlign: "left", minWidth: 0, width: "100%" }}>
                 <div
                   style={{
                     width: "160px",
+                    maxWidth: "100%",
                     height: "3px",
                     backgroundColor: "#EE402D",
-                    marginBottom: "28px",
+                    marginBottom: "24px",
                   }}
                 />
                 <h2
                   style={{
                     color: "#ffffff",
-                    fontSize: "28px",
+                    fontSize: "clamp(22px, 2.4vw, 28px)",
                     marginBottom: "14px",
+                    textAlign: "left",
                   }}
                 >
                   OUR VISION
@@ -155,9 +174,11 @@ export default function AboutPage() {
                 <p
                   style={{
                     color: "#e6e6e6",
-                    fontSize: "17px",
+                    fontSize: "clamp(15px, 1.3vw, 17px)",
                     lineHeight: 1.65,
                     margin: 0,
+                    textAlign: "justify",
+                    textJustify: "inter-word",
                   }}
                 >
                   To be the leading design-and-build partner in the UAE,
@@ -173,21 +194,24 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: "32px",
-              paddingBottom: "64px",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 240px), 1fr))",
+              gap: "clamp(24px, 3vw, 32px)",
+              paddingBottom: "clamp(44px, 6vw, 64px)",
+              alignItems: "start",
             }}
           >
             {VALUES.map((v, i) => (
               <Reveal key={v[0]} delay={i * 0.08}>
-                <div>
+                <div style={{ textAlign: "left", minWidth: 0, width: "100%" }}>
                   <h3
                     style={{
                       color: "#EE402D",
-                      fontSize: "17px",
+                      fontSize: "16px",
                       fontWeight: 700,
                       letterSpacing: "0.06em",
                       marginBottom: "10px",
+                      textAlign: "left",
                     }}
                   >
                     {v[0]}
@@ -198,6 +222,7 @@ export default function AboutPage() {
                       fontSize: "14px",
                       lineHeight: 1.6,
                       margin: 0,
+                      textAlign: "left",
                     }}
                   >
                     {v[1]}
@@ -214,7 +239,7 @@ export default function AboutPage() {
           style={{
             width: "100%",
             textAlign: "center",
-            fontSize: "clamp(72px, 19vw, 240px)",
+            fontSize: "clamp(54px, 17.5vw, 240px)",
             fontWeight: 700,
             lineHeight: 0.82,
             letterSpacing: "0.02em",
@@ -222,6 +247,7 @@ export default function AboutPage() {
             WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.28)",
             userSelect: "none",
             paddingBottom: "8px",
+            overflow: "hidden",
           }}
         >
           CREATIVE
@@ -229,8 +255,14 @@ export default function AboutPage() {
       </section>
 
       {/* 3. White Section Below Black Band: Trusted Partners / Logo Grid */}
-      <section style={{ backgroundColor: "#ffffff", color: "#111111" }}>
-        <div className="w">
+      <section
+        style={{
+          backgroundColor: "#ffffff",
+          color: "#111111",
+          overflowX: "clip",
+        }}
+      >
+        <div className="w" style={{ minWidth: 0 }}>
           <div
             style={{
               fontSize: "12px",
@@ -239,18 +271,20 @@ export default function AboutPage() {
               textTransform: "uppercase",
               marginBottom: "10px",
               color: "#111111",
+              textAlign: "left",
             }}
           >
             OUR CLIENTS
           </div>
           <Reveal>
-            <h2 style={{ marginBottom: "18px" }}>
+            <h2 style={{ marginBottom: "18px", textAlign: "left" }}>
               TRUSTED ACROSS INDUSTRIES.
             </h2>
           </Reveal>
           <div
             style={{
               width: "150px",
+              maxWidth: "100%",
               height: "3px",
               backgroundColor: "#EE402D",
               marginBottom: "22px",
@@ -258,10 +292,11 @@ export default function AboutPage() {
           />
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "clamp(15.5px, 1.4vw, 18px)",
               lineHeight: 1.55,
               color: "#222222",
               marginBottom: "36px",
+              textAlign: "left",
             }}
           >
             We work with clinics, restaurants, hotels, retail brands and
@@ -271,7 +306,8 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 160px), 1fr))",
               gap: "16px",
             }}
           >
@@ -289,6 +325,7 @@ export default function AboutPage() {
                     alignItems: "center",
                     justifyContent: "center",
                     textAlign: "center",
+                    minWidth: 0,
                   }}
                 >
                   {!isFallback ? (

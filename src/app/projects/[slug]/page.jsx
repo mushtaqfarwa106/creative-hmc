@@ -172,6 +172,7 @@ async function ProjectDetailContent({ params }) {
                 <img
                   src={photoSrc}
                   alt={`${project.name} photo ${index + 2}`}
+                  loading="lazy"
                   decoding="async"
                 />
               </figure>

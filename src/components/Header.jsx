@@ -18,12 +18,11 @@ function HeaderContent() {
   return (
     <header>
       <div className="w">
-        <Link className="logo" href="/">
+        <Link className="logo" href="/" aria-label="Creative HMC Home">
           <img
-            src="/images/Creative logo-01.png"
-            alt="Creative HMC"
+            src={encodeURI("/images/Creative-3.svg")}
+            alt="Creative Interior Design"
           />
-          Creative HMC
         </Link>
 
         <nav className={menuOpen ? "open" : ""}>

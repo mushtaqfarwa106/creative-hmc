@@ -64,8 +64,9 @@ header .w {
 
 .logo svg,
 .logo img {
-  width: 34px;
-  height: 34px;
+  width: auto;
+  height: 42px;
+  max-width: 210px;
   object-fit: contain;
   display: block;
 }
@@ -236,6 +237,10 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: transform, opacity;
+  animation:
+    heroArcEnter 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    heroArcFloat 7s ease-in-out 1.1s infinite;
 }
 
 .arc svg,
@@ -244,6 +249,15 @@ h1 {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.arc img {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+}
+
+.hero:hover .arc img {
+  transform: scale(1.025);
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
 }
 
 .arc path {
@@ -262,6 +276,26 @@ h1 {
 @keyframes dr {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heroArcEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroArcFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.2deg);
   }
 }
 
@@ -732,8 +766,13 @@ h2 em {
 
 .ct {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 5vw;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.ct > div {
+  min-width: 0;
 }
 
 .ct .card {
@@ -751,18 +790,30 @@ h2 em {
   max-width: 56ch;
 }
 
+.contact-info-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
 footer {
   background: #000;
   color: #bbb;
-  padding: 8vh 0 5vh;
+  padding: 56px 0 40px;
   font-size: 14px;
   width: 100%;
 }
 
 .fg {
   display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 30px;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  align-items: start;
+}
+
+.fg > div {
+  min-width: 0;
 }
 
 footer h4 {
@@ -773,10 +824,11 @@ footer h4 {
 
 footer p,
 footer a {
-  margin: 4px 0;
+  margin: 3px 0;
   color: #bbb;
   text-decoration: none;
   display: block;
+  overflow-wrap: anywhere;
 }
 
 footer a:hover {
@@ -1233,8 +1285,9 @@ section.mist:has(.tl) .card p {
   }
 
   .logo img {
-    width: 26px;
-    height: 26px;
+    width: auto;
+    height: 32px;
+    max-width: 165px;
   }
 
   .hd-actions {
@@ -1297,6 +1350,14 @@ section.mist:has(.tl) .card p {
     grid-template-columns: 1fr;
   }
 
+  footer {
+    padding: 44px 0 32px;
+  }
+
+  .fg {
+    gap: 20px;
+  }
+
   .f1 {
     top: 4%;
     right: 0;
@@ -1327,6 +1388,12 @@ section.mist:has(.tl) .card p {
 }
 
 /* Mobile Breakpoint */
+@media (max-width: 640px) {
+  .contact-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 639px) {
   .stats {
     grid-template-columns: 1fr;
@@ -1411,12 +1478,57 @@ section.mist:has(.tl) .card p {
   }
 
   .logo img {
-    width: 24px;
-    height: 24px;
+    width: auto;
+    height: 28px;
+    max-width: 145px;
   }
 
   header .btn.r {
     padding: 7px 11px;
     font-size: 12px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arc,
+  .arc img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+footer {
+  background: #000;
+  color: #bbb;
+  padding: 48px 0 36px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.fg {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 0.85fr) minmax(0, 1.05fr) minmax(0, 0.85fr);
+  gap: 20px 24px;
+  align-items: start;
+}
+
+.fg > div {
+  min-width: 0;
+}
+
+footer h4 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+footer p,
+footer a {
+  margin: 2px 0;
+  line-height: 1.45;
+  color: #bbb;
+  text-decoration: none;
+  display: block;
+  overflow-wrap: break-word;
 }
