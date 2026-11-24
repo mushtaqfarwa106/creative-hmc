@@ -95,8 +95,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Selected Work Bento */}
-      <section>
+      {/* Selected Work Horizontal Slider (Up to 6 Projects) */}
+      <section className="home-projects-slider">
         <div className="w">
           <div className="tag">PROJECTS</div>
           <Reveal>
@@ -104,7 +104,7 @@ export default function HomePage() {
               Selected <em>work</em>
             </h2>
           </Reveal>
-          <ProjectGrid limit={3} />
+          <ProjectGrid limit={6} sliderControls />
           <p style={{ marginTop: "26px" }}>
             <Link className="btn o" href="/projects">
               All projects →

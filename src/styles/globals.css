@@ -1629,3 +1629,87 @@ footer a {
     scroll-snap-align: start;
   }
 }
+/* Horizontal slider row for Selected work on phone, laptop & desktop */
+.home-projects-slider .project-cards-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 18px;
+  padding-bottom: 12px;
+}
+
+.home-projects-slider .project-cards-grid .project-card-clean {
+  flex: 0 0 calc((100% - 36px) / 3) !important;
+  min-width: 310px;
+  max-width: 400px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .home-projects-slider .project-cards-grid .project-card-clean {
+    flex: 0 0 68% !important;
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-projects-slider .project-cards-grid .project-card-clean {
+    flex: 0 0 84% !important;
+    min-width: 260px;
+    max-width: 340px;
+  }
+}
+/* Horizontal slider row for Selected work (no visible scrollbar) */
+.home-projects-slider .project-cards-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 18px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.home-projects-slider .project-cards-grid::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+.project-slider-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.project-slider-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: #111111;
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.project-slider-arrow:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+@media (max-width: 639px) {
+  .project-slider-controls {
+    display: none !important;
+  }
+}

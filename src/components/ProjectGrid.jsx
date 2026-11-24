@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { PROJECTS, slugifyProject } from "../data/siteData";
 
 const SECTORS = ["All", "Medical", "Hospitality", "Retail", "Wellness"];
@@ -11,8 +11,10 @@ export default function ProjectGrid({
   limit = null,
   featuredOnly = false,
   showFilter = false,
+  sliderControls = false,
 }) {
   const [selectedSector, setSelectedSector] = useState("All");
+  const gridRef = useRef(null);
 
   const effectiveLimit =
     typeof limit === "number" ? limit : featuredOnly ? 3 : null;
@@ -26,6 +28,15 @@ export default function ProjectGrid({
     typeof effectiveLimit === "number"
       ? sectorFiltered.slice(0, effectiveLimit)
       : sectorFiltered;
+
+  const slideProjects = (direction) => {
+    if (!gridRef.current) return;
+    const step = Math.max(300, Math.round(gridRef.current.clientWidth * 0.75));
+    gridRef.current.scrollBy({
+      left: direction * step,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="project-grid-wrapper">
@@ -47,7 +58,10 @@ export default function ProjectGrid({
         </div>
       )}
 
-      <div className="project-cards-grid project-cards-grid--three">
+      <div
+        ref={gridRef}
+        className="project-cards-grid project-cards-grid--three"
+      >
         {visibleProjects.map((project, idx) => {
           const slug = slugifyProject(project.name);
           return (
@@ -95,6 +109,27 @@ export default function ProjectGrid({
           );
         })}
       </div>
+
+      {sliderControls && (
+        <div className="project-slider-controls">
+          <button
+            type="button"
+            aria-label="Previous projects"
+            onClick={() => slideProjects(-1)}
+            className="project-slider-arrow"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            aria-label="Next projects"
+            onClick={() => slideProjects(1)}
+            className="project-slider-arrow"
+          >
+            →
+          </button>
+        </div>
+      )}
     </div>
   );
 }
