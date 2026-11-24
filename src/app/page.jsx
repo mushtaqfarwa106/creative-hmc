@@ -8,9 +8,15 @@ import TrustedLogosSlider from "../components/TrustedLogosSlider";
 export default function HomePage() {
   return (
     <>
-      {/* Red Hero with Creative C-Stroke */}
+      {/* Clean Red Hero */}
       <div className="hero">
-        <div className="w">
+        <div
+          className="w"
+          style={{
+            gridTemplateColumns: "minmax(0, 1fr)",
+            minHeight: "76vh",
+          }}
+        >
           <div>
             <div className="eb">DUBAI, UAE · SINCE 2017</div>
             <h1>
@@ -27,13 +33,6 @@ export default function HomePage() {
             <Link className="btn o" href="/projects">
               View Projects
             </Link>
-          </div>
-
-          <div className="arc">
-            <img
-              src="/images/Creative Stroke.png"
-              alt="Creative HMC C Mark"
-            />
           </div>
         </div>
       </div>
