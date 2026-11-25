@@ -138,8 +138,8 @@ export default function ProjectGrid({
             marginTop: "48px",
             padding: "32px 24px",
             borderRadius: "24px",
-            border: "1px solid #f4c7ad",
-            background: "linear-gradient(135deg, #fff8f3 0%, #fff1e8 100%)",
+            border: "1px solid rgba(239, 65, 35, 0.28)",
+            background: "rgba(239, 65, 35, 0.06)",
             display: "flex",
             flexWrap: "wrap",
             alignItems: "center",
@@ -155,7 +155,7 @@ export default function ProjectGrid({
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
-                color: "#ea580c",
+                color: "var(--accent, #ef4123)",
                 marginBottom: "6px",
               }}
             >
@@ -171,8 +171,8 @@ export default function ProjectGrid({
             <a
               className="btn k project-cta-btn"
               style={{
-                background: "#ea580c",
-                borderColor: "#ea580c",
+                background: "var(--accent, #ef4123)",
+                borderColor: "var(--accent, #ef4123)",
                 color: "#ffffff",
               }}
               href={getWhatsAppUrl(
@@ -186,8 +186,8 @@ export default function ProjectGrid({
             <Link
               className="btn o project-cta-btn"
               style={{
-                borderColor: "#ea580c",
-                color: "#ea580c",
+                borderColor: "var(--accent, #ef4123)",
+                color: "var(--accent, #ef4123)",
                 background: "#ffffff",
               }}
               href="/contact"
