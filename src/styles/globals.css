@@ -1721,3 +1721,77 @@ footer a {
     gap: 12px;
   }
 }
+/* Compact top and bottom spacing around TrustedLogosSlider on all screens */
+.trusted-logos-slider,
+.logos-slider,
+.logo-marquee {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  min-height: auto !important;
+}
+/* Desktop & Laptop: balanced 4-column footer with vertical Follow Us links */
+.orig-footer .w.fg {
+  display: grid !important;
+  grid-template-columns: 1.4fr 1.1fr 0.8fr 0.8fr !important;
+  gap: 32px !important;
+  align-items: start;
+}
+
+.orig-footer .footer-follow-row {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.orig-footer .footer-follow-row a {
+  display: block !important;
+}
+
+/* Mobile (<= 639px): Brand full-width, Contact full-width, then Pages (left) & Follow Us (right) side by side */
+@media (max-width: 639px) {
+  .orig-footer .w.fg {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px 20px !important;
+  }
+
+  .orig-footer .footer-brand-col {
+    grid-column: 1 / -1 !important;
+  }
+
+  .orig-footer .footer-contact-col {
+    grid-column: 1 / -1 !important;
+  }
+
+  .orig-footer .footer-pages-col {
+    grid-column: 1 / 2 !important;
+  }
+
+  .orig-footer .footer-follow-col {
+    grid-column: 2 / 3 !important;
+  }
+}
+.project-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 639px) {
+  .project-cta-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .project-cta-actions .project-cta-btn {
+    width: 100% !important;
+    min-height: 46px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0 !important;
+  }
+}

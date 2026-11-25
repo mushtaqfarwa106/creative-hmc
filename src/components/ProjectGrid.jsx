@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { PROJECTS, slugifyProject } from "../data/siteData";
+import { PROJECTS, slugifyProject, getWhatsAppUrl } from "../data/siteData";
 
 const SECTORS = ["All", "Medical", "Hospitality", "Retail", "Wellness"];
 
@@ -128,6 +128,73 @@ export default function ProjectGrid({
           >
             →
           </button>
+        </div>
+      )}
+
+      {showFilter && (
+        <div
+          className="project-cta-box"
+          style={{
+            marginTop: "48px",
+            padding: "32px 24px",
+            borderRadius: "24px",
+            border: "1px solid #f4c7ad",
+            background: "linear-gradient(135deg, #fff8f3 0%, #fff1e8 100%)",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "18px",
+          }}
+        >
+          <div>
+            <span
+              style={{
+                display: "inline-block",
+                fontSize: "12px",
+                fontWeight: 700,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "#ea580c",
+                marginBottom: "6px",
+              }}
+            >
+              START A CONVERSATION
+            </span>
+            <h3 style={{ margin: 0 }}>Let’s talk about your project</h3>
+            <p style={{ margin: "6px 0 0" }}>
+              Planning a medical, retail, or hospitality space in the UAE? Reach out to discuss scope and timelines.
+            </p>
+          </div>
+
+          <div className="project-cta-actions">
+            <a
+              className="btn k project-cta-btn"
+              style={{
+                background: "#ea580c",
+                borderColor: "#ea580c",
+                color: "#ffffff",
+              }}
+              href={getWhatsAppUrl(
+                "Hello Creative HMC, let’s talk about a project I saw on the Projects page."
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp →
+            </a>
+            <Link
+              className="btn o project-cta-btn"
+              style={{
+                borderColor: "#ea580c",
+                color: "#ea580c",
+                background: "#ffffff",
+              }}
+              href="/contact"
+            >
+              Contact Page
+            </Link>
+          </div>
         </div>
       )}
     </div>

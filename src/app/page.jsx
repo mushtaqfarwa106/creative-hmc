@@ -131,7 +131,7 @@ export default function HomePage() {
             style={{
               background: "#fff",
               borderRadius: "24px",
-              padding: "24px 20px",
+              padding: "10px 16px",
               border: "1px solid var(--ln)",
               maxWidth: "1000px",
               margin: "0 auto",

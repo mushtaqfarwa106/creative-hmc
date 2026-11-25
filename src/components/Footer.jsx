@@ -6,7 +6,7 @@ export default function Footer() {
     <>
       <footer className="orig-footer">
         <div className="w fg">
-          <div>
+          <div className="footer-brand-col">
             <Link
               href="/"
               style={{
@@ -29,7 +29,15 @@ export default function Footer() {
               Design-and-build interiors across the UAE. Contracting division of HQ International.
             </p>
           </div>
-          <div>
+
+          <div className="footer-contact-col">
+            <h4>Contact</h4>
+            <p>Business Avenue, Office 705, Sheikh Rashid Rd, Dubai</p>
+            <p>info@creativehmc.com</p>
+            <p>Licence 788951</p>
+          </div>
+
+          <div className="footer-pages-col">
             <h4>Pages</h4>
             <Link href="/">Home</Link>
             <Link href="/about">About Us</Link>
@@ -37,35 +45,32 @@ export default function Footer() {
             <Link href="/projects">Projects</Link>
             <Link href="/contact">Contact Us</Link>
           </div>
-          <div>
-            <h4>Contact</h4>
-            <p>Business Avenue, Office 705, Sheikh Rashid Rd, Dubai</p>
-            <p>info@creativehmc.com</p>
-            <p>Licence 788951</p>
-          </div>
-          <div>
+
+          <div className="footer-follow-col">
             <h4>Follow Us</h4>
-            <a
-              href="https://www.linkedin.com/company/creative-hmc-interior-design/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://www.instagram.com/creativeinteriors.ae/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-            <a
-              href={getWhatsAppUrl("Hello Creative HMC, I’d like to discuss a project.")}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
+            <div className="footer-follow-row">
+              <a
+                href="https://www.linkedin.com/company/creative-hmc-interior-design/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://www.instagram.com/creativeinteriors.ae/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href={getWhatsAppUrl("Hello Creative HMC, I’d like to discuss a project.")}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </footer>
